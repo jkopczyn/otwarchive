@@ -51,6 +51,9 @@
       <% if ["Series", "Work"].include?(subscription.subscribable_type) %>
         <%= ts("Updated:") %> <%= subscription.subscribable.revised_at ? subscription.subscribable.revised_at.to_date : subscription.subscribable.published_at %>
       <% end %>
+      <% if subscription.subscribable_type == "User" and if subscription.subscribable.works.size > 0 %>
+        <%= ts("Updated:") %> <%= subscription.subscribable.works.map { |w| w.revised_at }.sort.last.to_date %>
+      <% end %>
     </dt>
     <dd>
       <%= form_for [current_user, subscription], :html => {:method => :delete} do |f| %>
