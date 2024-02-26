@@ -48,6 +48,9 @@
       <% unless subscription.subscribable_type == "User" %>
         <%= ts('by %{creators}', :creators => byline(subscription.subscribable)).html_safe %>
       <% end %>
+      <% if ["Series", "Work"].include?(subscription.subscribable_type) %>
+        <%= ts("Updated:") %> <%= subscription.subscribable.revised_at ? subscription.subscribable.revised_at.to_date : subscription.subscribable.published_at %>
+      <% end %>
     </dt>
     <dd>
       <%= form_for [current_user, subscription], :html => {:method => :delete} do |f| %>
