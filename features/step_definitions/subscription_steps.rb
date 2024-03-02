@@ -33,11 +33,6 @@ When /^"([^\"]*)" subscribes to (author|work|series) "([^\"]*)"$/ do |user, type
   step %{I should see an "Unsubscribe from #{name}" button}
 end
 
-Then /^the subscription should show an update date$/ do
-  today = DateTime.now().strftime('%F')
-  step %{I should see "Updated: #{today}"}
-end
-
 Then /^I should see "([^\"]*)" with an update date$/ do |text|
   today = DateTime.now().strftime('%F')
   step %{I should see "#{text} Updated: #{today}"}
