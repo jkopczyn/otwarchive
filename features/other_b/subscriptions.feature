@@ -171,22 +171,26 @@
     And "second_user" subscribes to work "Awesome Story"
     And "second_user" subscribes to series "Awesome Series"
   When I am on my subscriptions page
-  Then I should see "Awesome Series (Series)"
+  Then I should see "My Subscriptions"
+    And I should see "Awesome Series (Series)"
     And the subscription should show an update date
     And I should see "third_user"
     And the subscription should show an update date
     And I should see "Awesome Story (Work)"
     And the subscription should show an update date
   When I follow "Series Subscriptions"
-  Then I should see "Awesome Series"
+  Then I should see "My Series Subscriptions"
+    And I should see "Awesome Series"
     And I should not see "(Series)"
     And the subscription should show an update date
   When I follow "User Subscriptions"
-  Then I should see "third_user"
-    Then I should see "first_user"
+  Then I should see "My User Subscriptions"
+    And I should see "third_user"
+    And I should see "first_user"
     And the subscription should show an update date
   When I follow "Work Subscriptions"
-  Then I should see "Awesome Story"
+  Then I should see "My Work Subscriptions"
+    And I should see "Awesome Story"
     And I should not see "(Work)"
     And the subscription should show an update date
 
