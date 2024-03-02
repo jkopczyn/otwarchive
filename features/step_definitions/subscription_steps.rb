@@ -34,6 +34,6 @@ When /^"([^\"]*)" subscribes to (author|work|series) "([^\"]*)"$/ do |user, type
 end
 
 When /^the subscription should show an update date$/ do
-  today = DateTime.now().strftime('2001-02-03')
+  today = DateTime.now().strftime('%F')
   step %{I should see "Updated: #{today}"}
 end
