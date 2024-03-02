@@ -34,17 +34,17 @@ When /^"([^\"]*)" subscribes to (author|work|series) "([^\"]*)"$/ do |user, type
 end
 
 Then /^I should see "([^\"]*)" with an update date$/ do |text|
-  today = DateTime.now().strftime('%F')
+  today = DateTime.now.strftime("%F")
   step %{I should see "#{text} Updated: #{today}"}
 end
 
 Then /^I should see "([^\"]*)" with author and update date$/ do |text|
-  today = DateTime.now().strftime('%F')
+  today = DateTime.now.strftime("%F")
   target_regex = /#{Regexp.escape(text)} by \w+ Updated: #{Regexp.escape(today)}/
   page.should have_content(target_regex)
 end
 
 Then /^I should not see "([^\"]*)" with an update date$/ do |text|
-  today = DateTime.now().strftime('%F')
+  today = DateTime.now.strftime("%F")
   step %{I should not see "#{text} Updated: #{today}"}
 end

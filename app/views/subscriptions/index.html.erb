@@ -52,7 +52,7 @@
         <%= ts("Updated:") %> <%= subscription.subscribable.revised_at ? subscription.subscribable.revised_at.to_date : subscription.subscribable.published_at %>
       <% end %>
       <% if subscription.subscribable_type == "User" and subscription.subscribable.works.size > 0 %>
-        <%= ts("Updated:") %> <%= subscription.subscribable.works.map { |w| w.revised_at }.sort.last.to_date %>
+        <%= ts("Updated:") %> <%= subscription.subscribable.works.map(&:revised_at).max.to_date %>
       <% end %>
     </dt>
     <dd>
