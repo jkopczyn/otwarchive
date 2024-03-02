@@ -37,3 +37,8 @@ Then /^the subscription should show an update date$/ do
   today = DateTime.now().strftime('%F')
   step %{I should see "Updated: #{today}"}
 end
+
+Then /^I should see "([^\"]*)" with an update date$/ do |text|
+  today = DateTime.now().strftime('%F')
+  step %{I should see "#{text} Updated: #{today}"}
+end

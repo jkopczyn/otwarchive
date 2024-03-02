@@ -186,8 +186,7 @@
   When I follow "User Subscriptions"
   Then I should see "My User Subscriptions"
     And I should see "third_user"
-    And I should see "first_user"
-    And the subscription should show an update date
+    And I should see "first_user" with an update date
   When I follow "Work Subscriptions"
   Then I should see "My Work Subscriptions"
     And I should see "Awesome Story"
