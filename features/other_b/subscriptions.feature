@@ -161,6 +161,33 @@
     And I should not see "Awesome Series"
     And I should not see "third_user"
 
+  Scenario: subscriptions on a user's subscription page show date of last update
+
+  When I am logged in as "first_user"
+    And I post the work "The First Awesome Story"
+  When I am logged in as "second_user"
+    And "second_user" subscribes to author "third_user"
+    And "second_user" subscribes to author "first_user"
+    And "second_user" subscribes to work "Awesome Story"
+    And "second_user" subscribes to series "Awesome Series"
+  When I am on my subscriptions page
+  Then I should see "My Subscriptions"
+    And I should see "Awesome Series (Series)" with author and update date
+    And I should see "third_user"
+    And I should not see "third_user" with an update date
+    And I should see "first_user" with an update date
+    And I should see "Awesome Story (Work)" with author and update date
+  When I follow "Series Subscriptions"
+  Then I should see "My Series Subscriptions"
+    And I should see "Awesome Series" with author and update date
+  When I follow "User Subscriptions"
+  Then I should see "My User Subscriptions"
+    And I should see "third_user"
+    And I should not see "third_user" with an update date
+  When I follow "Work Subscriptions"
+  Then I should see "My Work Subscriptions"
+    And I should see "Awesome Story" with author and update date
+
   Scenario: Subscribe to a multi-chapter work should redirect you back to the chapter you were viewing
 
   When I am logged in as "first_user"
